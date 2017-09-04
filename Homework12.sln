@@ -8,7 +8,25 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Task", "Solution T
 		Advanced9第十二次homework.txt = Advanced9第十二次homework.txt
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebMvc5", "WebMvc5\WebMvc5.csproj", "{1EECDFC4-6530-4D67-A1EA-894728031DC6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebMvc5.Tests", "WebMvc5.Tests\WebMvc5.Tests.csproj", "{C1B0C5C6-5CE5-4E72-A9C7-F933A8BABE2D}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1EECDFC4-6530-4D67-A1EA-894728031DC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EECDFC4-6530-4D67-A1EA-894728031DC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EECDFC4-6530-4D67-A1EA-894728031DC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EECDFC4-6530-4D67-A1EA-894728031DC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1B0C5C6-5CE5-4E72-A9C7-F933A8BABE2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1B0C5C6-5CE5-4E72-A9C7-F933A8BABE2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1B0C5C6-5CE5-4E72-A9C7-F933A8BABE2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1B0C5C6-5CE5-4E72-A9C7-F933A8BABE2D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
