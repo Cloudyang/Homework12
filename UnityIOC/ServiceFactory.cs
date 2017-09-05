@@ -23,10 +23,22 @@ namespace UnityIOC
         /// <summary>
         /// 获取带EF DBContext对象及对应业务类的实例
         /// </summary>
-        /// <typeparam name="TDbContext"></typeparam>
         /// <param name="context"></param>
         /// <returns></returns>
-        public static ServiceFactory GetEFService<TDbContext>(TDbContext context) where TDbContext: DbContext
+        public ServiceFactory GetEFService(DbContext context)
+        {
+            //注册DbContext实例
+            Instance.Container.RegisterType(typeof(DbContext), context.GetType());
+            return Instance;
+        }
+
+        /// <summary>
+        /// 获取带EF DBContext对象及对应业务类的实例
+        /// </summary>
+        /// <typeparam name="TDbContext"></typeparam>
+        /// <returns></returns>
+        public ServiceFactory GetEFService<TDbContext>()
+            where TDbContext : DbContext
         {
             //注册DbContext实例
             Instance.Container.RegisterType<DbContext, TDbContext>();
