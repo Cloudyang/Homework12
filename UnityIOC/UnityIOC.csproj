@@ -66,6 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceFactory.cs" />
     <Compile Include="UnityResolve.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -77,9 +78,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Bussiness.Interface\Bussiness.Interface.csproj">
+    <ProjectReference Include="..\Bussiness.Interface\Bussiness.IService.csproj">
       <Project>{3835f109-cb64-4487-8f8f-8304aa38f089}</Project>
-      <Name>Bussiness.Interface</Name>
+      <Name>Bussiness.IService</Name>
     </ProjectReference>
     <ProjectReference Include="..\Bussiness.Service\Bussiness.Service.csproj">
       <Project>{de5e0dfb-e435-4d47-95f5-69e7664db91f}</Project>

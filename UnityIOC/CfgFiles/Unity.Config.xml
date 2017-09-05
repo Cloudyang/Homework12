@@ -5,20 +5,15 @@
   <unity>
     <sectionExtension type="Microsoft.Practices.Unity.InterceptionExtension.Configuration.InterceptionConfigurationExtension, Microsoft.Practices.Unity.Interception.Configuration"/>
     <containers>
-      <container name="Homework11Container">
-        <register type="System.Data.Entity.DbContext, EntityFramework" mapTo="CodeFirstDB.Model, CodeFirstDB"/>
-        <register type="Bussiness.Interface.IBaseService,Bussiness.Interface" mapTo="Bussiness.Service.BaseService, Bussiness.Service"/>
-        <register type="Bussiness.Interface.IUserMenuService,Bussiness.Interface" mapTo="Bussiness.Service.UserMenuService, Bussiness.Service"/>
-      </container>
-      <container name="Homework11ContainerGeneric">
-        <register type="System.Data.Entity.DbContext, EntityFramework" mapTo="CodeFirstDB.Model, CodeFirstDB"/>
-        <register type="Bussiness.Interface.IGenericService`1,Bussiness.Interface" mapTo="Bussiness.Service.GenericService`1, Bussiness.Service"/>
+      <container name="Homework12Container">
+        <register type="System.Data.Entity.DbContext, EntityFramework" mapTo="EF.Model.JDContext, EF.Model"/>
+        <register type="Bussiness.IService.IBaseService`1,Bussiness.IService" mapTo="Bussiness.Service.BaseService`1, Bussiness.Service"/>
        </container>
 
       <container name="Homework12ContainerAOP">
         <extension type="Interception"/>
-        <register type="System.Data.Entity.DbContext, EntityFramework" mapTo="CodeFirstDB.Model, CodeFirstDB"/>
-        <register type="Bussiness.Interface.IBaseService,Bussiness.Interface" mapTo="Bussiness.Service.BaseService, Bussiness.Service"/>
+        <register type="System.Data.Entity.DbContext, EntityFramework" mapTo="EF.Model.JDContext, EF.Model"/>
+        <register type="Bussiness.IService.IBaseService,Bussiness.IService" mapTo="Bussiness.Service.BaseService, Bussiness.Service"/>
         <register type="Bussiness.Interface.IUserMenuService,Bussiness.Interface" mapTo="Bussiness.Service.UserMenuService, Bussiness.Service">
           <interceptor type="InterfaceInterceptor"/>
           <interceptionBehavior type="ConsoleApp1.BeforeAction, ConsoleApp1"/>

@@ -21,7 +21,7 @@ namespace UnityIOC
             UnityConfigurationSection section = (UnityConfigurationSection)configuration.GetSection(UnityConfigurationSection.SectionName);
 
             IUnityContainer container = new UnityContainer();
-            section.Configure(container, "Homework12ContainerAOP");
+            section.Configure(container, "Homework12Container");
             Instance = container.Resolve<T>();
         }
         public static T GetInstance()
