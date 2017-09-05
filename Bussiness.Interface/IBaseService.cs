@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Bussiness.IService
 {
-    public interface IService<T> : IDisposable
+    public interface IBaseService<T> : IDisposable
         where T : class
     {
         /// <summary>

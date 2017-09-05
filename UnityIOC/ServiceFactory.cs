@@ -1,6 +1,8 @@
-﻿using Microsoft.Practices.Unity;
+﻿using EF.Model;
+using Microsoft.Practices.Unity;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -17,6 +19,19 @@ namespace UnityIOC
         /// IOC的容器，可调用来获取对应接口实例。
         /// </summary>
         public IUnityContainer Container { get; set; }
+
+        /// <summary>
+        /// 获取带EF DBContext对象及对应业务类的实例
+        /// </summary>
+        /// <typeparam name="TDbContext"></typeparam>
+        /// <param name="context"></param>
+        /// <returns></returns>
+        public static ServiceFactory GetEFService<TDbContext>(TDbContext context) where TDbContext: DbContext
+        {
+            //注册DbContext实例
+            Instance.Container.RegisterType<DbContext, TDbContext>();
+            return Instance;
+        }
 
         /// <summary>
         /// 创建或者从缓存中获取对应业务类的实例

@@ -11,13 +11,13 @@ using System.Data.Entity;
 
 namespace Bussiness.Service
 {
-    public abstract class GenericService<T> : IService<T>
+    public abstract class BaseService<T> : IBaseService<T>
          where T : class
     {
         protected DbContext baseContext { get; private set; }
         protected DbSet<T> dbSet;
 
-        public GenericService(DbContext context)
+        public BaseService(DbContext context)
         {
             this.baseContext = context;
             dbSet = context.Set<T>();
