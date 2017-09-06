@@ -8,11 +8,11 @@ namespace UnityIOC.Tests
     [TestClass]
     public class UnitTest1
     {
-        private ServiceFactory sf = ServiceFactory.Instance;
         [TestMethod]
         public void TestMethod1()
         {
-       //     var container = sf.GetEFService<JDContext>().Container;
+            var sf = ServiceFactory.Instance;
+            Assert.IsNotNull(sf);
         }
     }
 }
