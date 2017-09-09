@@ -248,10 +248,10 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Category\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Category\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -265,6 +265,10 @@
     <ProjectReference Include="..\Bussiness.Interface\Bussiness.IService.csproj">
       <Project>{3835f109-cb64-4487-8f8f-8304aa38f089}</Project>
       <Name>Bussiness.IService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EF.Model\Entity.Model.csproj">
+      <Project>{3015f80e-ce5f-44b5-89a2-2789eff00109}</Project>
+      <Name>Entity.Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\Service.Model\Service.Model.csproj">
       <Project>{9a496692-9270-45e5-b9ff-74ad686b9c53}</Project>

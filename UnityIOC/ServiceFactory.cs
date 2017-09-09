@@ -1,4 +1,4 @@
-﻿using EF.Model;
+﻿using Entity.Model;
 using Microsoft.Practices.Unity;
 using System;
 using System.Collections.Generic;
