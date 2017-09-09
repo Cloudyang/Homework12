@@ -16,19 +16,10 @@ namespace WebMvc5.Controllers
             _CategoryServcie = categoryService;
         }
 
-        //private IBaseService<Category> _BaseService;
-
-        //public CategoryController(ICategoryService categoryService,IBaseService<Category> baseService)
-        //{
-        //    _CategoryServcie = categoryService;
-        //    _BaseService = baseService;
-        //}
-
         // GET: Category
         public ActionResult Index()
         {
             IQueryable<Category> categorys = _CategoryServcie.GetAll();
-            // IQueryable<Category> categorys = _BaseService.Set();
             return View(categorys);
         }
 

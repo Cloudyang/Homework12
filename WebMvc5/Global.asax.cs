@@ -30,20 +30,12 @@ namespace WebMvc5
     /// </summary>
     public class UnityControllerFactory : DefaultControllerFactory
     {
-        private IUnityContainer UnityContainer
-        {
-            get
-            {
-                IUnityContainer container = RegisterService();
-                return container;
-            }
-        }
+        private static IUnityContainer _IUnityContainer;
 
         /// <summary>
         /// 使用Unity自动加载对应的IService接口的实现（Service层）
         /// </summary>
-        /// <param name="container"></param>
-        private static IUnityContainer RegisterService()
+        static UnityControllerFactory()
         {
             IUnityContainer container = new UnityContainer();
             Dictionary<string, Type> dictInterface = new Dictionary<string, Type>();
@@ -52,18 +44,16 @@ namespace WebMvc5
             container.RegisterType<DbContext, JDContext>();
 
             var itypes = Assembly.Load("Bussiness.IService").GetTypes();
-            var types= Assembly.Load("Bussiness.Service").GetTypes();
+            var types = Assembly.Load("Bussiness.Service").GetTypes();
             foreach (var itype in itypes)
             {
-                var type = types.FirstOrDefault(t => itype.IsAssignableFrom(t) 
-                                                || (itype.IsGenericType && t.IsGenericType));
+                var type = types.FirstOrDefault(t => itype.IsAssignableFrom(t));
                 if (type != null)
                 {
                     container.RegisterType(itype, type);
                 }
             }
-            
-            return container;
+            _IUnityContainer = container;
         }
 
         protected override IController GetControllerInstance(RequestContext requestContext, Type controllerType)
@@ -72,13 +62,13 @@ namespace WebMvc5
             {
                 return null;
             }
-            IController controller = (IController)this.UnityContainer.Resolve(controllerType);
+            IController controller = (IController)_IUnityContainer.Resolve(controllerType);
             return controller;
         }
 
         public override void ReleaseController(IController controller)
         {
-            this.UnityContainer.Teardown(controller);
+            _IUnityContainer.Teardown(controller);
             base.ReleaseController(controller);
         }
     }

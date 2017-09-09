@@ -78,26 +78,31 @@ namespace UnityIOC
         {
             Dictionary<string, Type> dictInterface = new Dictionary<string, Type>();
             Dictionary<string, Type> dictService = new Dictionary<string, Type>();
-            Assembly currentAssembly = Assembly.GetExecutingAssembly();
+
+            var types = AppDomain.CurrentDomain.GetAssemblies()
+                                             .SelectMany(a => a.GetTypes());
             string interfaceSuffix = ".IService";
             string serviceSuffix = ".Service";
 
             //对比程序集里面的接口和具体的接口实现类，把它们分别放到不同的字典集合里
-            foreach (Type objType in currentAssembly.GetTypes())
+            foreach (Type objType in types)
             {
                 string defaultNamespace = objType.Namespace;
-                if (objType.IsInterface && defaultNamespace.EndsWith(interfaceSuffix))
+                if (defaultNamespace != null)
                 {
-                    if (!dictInterface.ContainsKey(objType.FullName))
+                    if (objType.IsInterface && defaultNamespace.EndsWith(interfaceSuffix))
                     {
-                        dictInterface.Add(objType.FullName, objType);
+                        if (!dictInterface.ContainsKey(objType.FullName))
+                        {
+                            dictInterface.Add(objType.FullName, objType);
+                        }
                     }
-                }
-                else if (defaultNamespace.EndsWith(serviceSuffix))
-                {
-                    if (!dictService.ContainsKey(objType.FullName))
+                    else if (defaultNamespace.EndsWith(serviceSuffix))
                     {
-                        dictService.Add(objType.FullName, objType);
+                        if (!dictService.ContainsKey(objType.FullName))
+                        {
+                            dictService.Add(objType.FullName, objType);
+                        }
                     }
                 }
             }
