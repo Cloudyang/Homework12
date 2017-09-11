@@ -1,13 +1,14 @@
 ﻿using System.Linq;
 using Entity.Model;
 
-namespace Bussiness.Service
+namespace Bussiness.IService
 {
-    public interface IUserService
+    public interface IUserService : IBaseService<User>
     {
-        int Add(User user);
-        int Delete(User user);
+        int AddUser(User user);
+        int DeleteUser(User user);
         IQueryable<User> GetAll();
-        int Update(User user);
+        int UpdateUser(User user);
+        //  int BindingMenu(Menu menu);
     }
 }

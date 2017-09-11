@@ -8,6 +8,7 @@ using Entity.Model;
 using System.Data.SqlClient;
 using System.Linq.Expressions;
 using System.Data.Entity;
+using Service.Model;
 
 namespace Bussiness.Service
 {
@@ -19,7 +20,7 @@ namespace Bussiness.Service
 
         public IQueryable<TEntity> GetAll<TEntity>(Expression<Func<Category, TEntity>> selector)
         {
-            return base.dbSet.Select<Category,TEntity>(selector);
+            return base.dbSet.Select<Category, TEntity>(selector);
         }
 
         public IQueryable<Category> GetAll()

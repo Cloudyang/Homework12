@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Bussiness.IService
 {
-    public interface ICategoryService 
+    public interface ICategoryService :IBaseService<Category>
     {
         IQueryable<TEntity> GetAll<TEntity>(Expression<Func<Category, TEntity>> selector);
 

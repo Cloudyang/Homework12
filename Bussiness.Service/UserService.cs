@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
+using Bussiness.IService;
 
 namespace Bussiness.Service
 {
@@ -14,17 +15,17 @@ namespace Bussiness.Service
         {
         }
 
-        public int Add(User user)
+        public int AddUser(User user)
         {
             return base.Insert(user);
         }
 
-        public int Update(User user)
+        public int UpdateUser(User user)
         {
             return base.Update(user);
         }
 
-        public int Delete(User user)
+        public int DeleteUser(User user)
         {
             return base.Delete(user.Id);
         }
