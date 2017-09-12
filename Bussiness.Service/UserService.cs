@@ -14,25 +14,5 @@ namespace Bussiness.Service
         public UserService(DbContext context) : base(context)
         {
         }
-
-        public int AddUser(User user)
-        {
-            return base.Insert(user);
-        }
-
-        public int UpdateUser(User user)
-        {
-            return base.Update(user);
-        }
-
-        public int DeleteUser(User user)
-        {
-            return base.Delete(user.Id);
-        }
-
-        public IQueryable<User> GetAll()
-        {
-            return base.Set();
-        }
     }
 }

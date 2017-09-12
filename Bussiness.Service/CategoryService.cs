@@ -17,15 +17,5 @@ namespace Bussiness.Service
         public CategoryService(DbContext context) : base(context)
         {
         }
-
-        public IQueryable<TEntity> GetAll<TEntity>(Expression<Func<Category, TEntity>> selector)
-        {
-            return base.dbSet.Select<Category, TEntity>(selector);
-        }
-
-        public IQueryable<Category> GetAll()
-        {
-            return base.dbSet;
-        }
     }
 }

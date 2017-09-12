@@ -14,21 +14,5 @@ namespace Bussiness.Service
         public MenuService(DbContext context) : base(context)
         {
         }
-
-        public int AddMenu(Menu menu)
-        {
-            return base.Insert(menu);
-        }
-
-        public int UpdateMenu(Menu menu)
-        {
-            return base.Update(menu);
-        }
-
-        public int DeleteMenu(Menu menu)
-        {
-            return base.Delete(menu);
-        }
-
     }
 }

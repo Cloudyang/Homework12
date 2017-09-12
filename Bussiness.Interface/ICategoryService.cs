@@ -10,8 +10,5 @@ namespace Bussiness.IService
 {
     public interface ICategoryService :IBaseService<Category>
     {
-        IQueryable<TEntity> GetAll<TEntity>(Expression<Func<Category, TEntity>> selector);
-
-        IQueryable<Category> GetAll();
     }
 }

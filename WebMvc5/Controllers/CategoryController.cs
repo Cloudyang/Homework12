@@ -19,7 +19,7 @@ namespace WebMvc5.Controllers
         // GET: Category
         public ActionResult Index()
         {
-            IQueryable<Category> categorys = _CategoryServcie.GetAll();
+            IQueryable<Category> categorys = _CategoryServcie.Set();
             return View(categorys);
         }
 
