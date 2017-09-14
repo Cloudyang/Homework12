@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Bussiness.IService.Model;
-using EF.Model;
+using Entity.Model;
 using System.Data.SqlClient;
 using System.Linq.Expressions;
 using System.Data.Entity;
