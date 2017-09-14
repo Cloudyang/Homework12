@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Bussiness.IService.Model;
+using Service.Model;
 using System.Data.SqlClient;
 using System.Linq.Expressions;
 using System.Data.Entity;

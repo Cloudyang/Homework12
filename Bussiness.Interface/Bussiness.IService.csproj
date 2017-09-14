@@ -43,9 +43,9 @@
     <Compile Include="IBaseService.cs" />
     <Compile Include="ICategoryService.cs" />
     <Compile Include="IMenuService.cs" />
+    <Compile Include="ISearch.cs" />
     <Compile Include="IUserMenuService.cs" />
     <Compile Include="IUserService.cs" />
-    <Compile Include="Model\PageResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
