@@ -1,4 +1,4 @@
-﻿using Service.Model;
+﻿using Bussiness.IService.Model;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;

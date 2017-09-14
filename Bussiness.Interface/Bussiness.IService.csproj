@@ -54,10 +54,6 @@
       <Project>{9a496692-9270-45e5-b9ff-74ad686b9c53}</Project>
       <Name>Service.Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Service.Model\Service.Model.csproj">
-      <Project>{9a496692-9270-45e5-b9ff-74ad686b9c53}</Project>
-      <Name>Service.Model</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
