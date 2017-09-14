@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26730.12
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Task", "Solution Task", "{E052311B-63B2-4D7D-ADFF-955F686639B4}"
 	ProjectSection(SolutionItems) = preProject
@@ -12,7 +12,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebMvc5", "WebMvc5\WebMvc5.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebMvc5.Tests", "WebMvc5.Tests\WebMvc5.Tests.csproj", "{C1B0C5C6-5CE5-4E72-A9C7-F933A8BABE2D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EF.Model", "EF.Model\EF.Model.csproj", "{3015F80E-CE5F-44B5-89A2-2789EFF00109}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entity.Model", "EF.Model\Entity.Model.csproj", "{3015F80E-CE5F-44B5-89A2-2789EFF00109}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityIOC", "UnityIOC\UnityIOC.csproj", "{8653B881-887B-4A0A-8D78-5BB7FD7437A4}"
 EndProject

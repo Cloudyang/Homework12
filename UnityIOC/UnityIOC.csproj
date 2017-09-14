@@ -94,9 +94,9 @@
       <Project>{de5e0dfb-e435-4d47-95f5-69e7664db91f}</Project>
       <Name>Bussiness.Service</Name>
     </ProjectReference>
-    <ProjectReference Include="..\EF.Model\EF.Model.csproj">
+    <ProjectReference Include="..\EF.Model\Entity.Model.csproj">
       <Project>{3015f80e-ce5f-44b5-89a2-2789eff00109}</Project>
-      <Name>EF.Model</Name>
+      <Name>Entity.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

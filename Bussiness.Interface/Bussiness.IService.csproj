@@ -42,12 +42,17 @@
   <ItemGroup>
     <Compile Include="IBaseService.cs" />
     <Compile Include="ICategoryService.cs" />
+    <Compile Include="Model\PageResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EF.Model\EF.Model.csproj">
+    <ProjectReference Include="..\EF.Model\Entity.Model.csproj">
       <Project>{3015f80e-ce5f-44b5-89a2-2789eff00109}</Project>
-      <Name>EF.Model</Name>
+      <Name>Entity.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Service.Model\Service.Model.csproj">
+      <Project>{9a496692-9270-45e5-b9ff-74ad686b9c53}</Project>
+      <Name>Service.Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\Service.Model\Service.Model.csproj">
       <Project>{9a496692-9270-45e5-b9ff-74ad686b9c53}</Project>

@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using UnityIOC;
-using EF.Model;
+using Entity.Model;
 
 namespace UnityIOC.Tests
 {

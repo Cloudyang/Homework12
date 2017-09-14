@@ -180,6 +180,9 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\System\Controllers\MenuController.cs" />
+    <Compile Include="Areas\System\Controllers\UserController.cs" />
+    <Compile Include="Areas\System\SystemAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -200,8 +203,10 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="HtmlPage.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Areas\System\Views\web.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -248,10 +253,14 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Category\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Category\" />
+    <Folder Include="Areas\System\Models\" />
+    <Folder Include="Areas\System\Views\Menu\" />
+    <Folder Include="Areas\System\Views\Shared\" />
+    <Folder Include="Areas\System\Views\User\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -266,9 +275,9 @@
       <Project>{3835f109-cb64-4487-8f8f-8304aa38f089}</Project>
       <Name>Bussiness.IService</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Service.Model\Service.Model.csproj">
-      <Project>{9a496692-9270-45e5-b9ff-74ad686b9c53}</Project>
-      <Name>Service.Model</Name>
+    <ProjectReference Include="..\UnityIOC\UnityIOC.csproj">
+      <Project>{8653b881-887b-4a0a-8d78-5bb7fd7437a4}</Project>
+      <Name>UnityIOC</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

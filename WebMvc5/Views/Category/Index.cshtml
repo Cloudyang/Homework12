@@ -1,0 +1,23 @@
+﻿@model IQueryable<Entity.Model.Category>
+    @{
+        ViewBag.Title = "Index";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <h2>Index</h2>
+    <table>
+        <tr>
+            <th>编号</th>
+            <th>名字</th>
+            <th>URL</th>
+        </tr>        
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Code</td>
+                    <td>@item.Name</td>
+                    <td>@item.Url</td>
+                </tr>
+            }
+        
+    </table>
