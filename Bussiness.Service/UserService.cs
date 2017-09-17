@@ -14,5 +14,12 @@ namespace Bussiness.Service
         public UserService(DbContext context) : base(context)
         {
         }
+
+        public int AddUsserReturnId(User user)
+        {
+            dbSet.Add(user);
+            base.Commit();
+            return user.Id;
+        }
     }
 }

@@ -1,11 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26730.12
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Task", "Solution Task", "{E052311B-63B2-4D7D-ADFF-955F686639B4}"
 	ProjectSection(SolutionItems) = preProject
 		Advanced9第十二次homework.txt = Advanced9第十二次homework.txt
+		说明文档.txt = 说明文档.txt
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebMvc5", "WebMvc5\WebMvc5.csproj", "{1EECDFC4-6530-4D67-A1EA-894728031DC6}"

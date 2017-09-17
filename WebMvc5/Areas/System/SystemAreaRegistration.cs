@@ -18,7 +18,7 @@ namespace WebMvc5.Areas.System
                 "System_default",
                 "System/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional },
-                new string[] { "WebMvc5.Areas.System" }
+                new string[] { "WebMvc5.Areas.System.Controllers" }
             );
         }
     }

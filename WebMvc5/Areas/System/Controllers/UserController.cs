@@ -3,87 +3,77 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Bussiness.IService;
+using Entity.Model;
 
 namespace WebMvc5.Areas.System.Controllers
 {
     public class UserController : Controller
     {
+        private IUserService _UserService;
+        public UserController(IUserService userService)
+        {
+            _UserService = userService;
+        }
+
         // GET: System/User
         public ActionResult Index()
         {
-            return View();
-        }
-
-        // GET: System/User/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: System/User/Create
-        public ActionResult Create()
-        {
+            var users = _UserService.Set();
+            ViewBag.Users = Newtonsoft.Json.JsonConvert.SerializeObject(users);
             return View();
         }
 
         // POST: System/User/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public string Create(User user)
         {
+            user.CreateTime = DateTime.Now;
+            int iResult = 0;
             try
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                iResult = _UserService.AddUsserReturnId(user);
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                return ex.Message;
             }
-        }
 
-        // GET: System/User/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
+            return iResult.ToString();
         }
 
         // POST: System/User/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public string Edit(User user)
         {
+            user.CreateTime = DateTime.Now;
+            int iResult = 0;
             try
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                iResult = _UserService.Update(user);
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                return ex.Message;
             }
+
+            return iResult.ToString();
         }
 
-        // GET: System/User/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: System/User/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public string Delete(User user)
         {
+            int iResult = 0;
             try
             {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
+                iResult = _UserService.Delete(user);
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                return ex.Message;
             }
+
+            return iResult.ToString();
         }
     }
 }

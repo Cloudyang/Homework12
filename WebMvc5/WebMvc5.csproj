@@ -213,6 +213,9 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\System\Views\web.config" />
+    <Content Include="Areas\System\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\System\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\System\Views\User\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -265,8 +268,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\System\Models\" />
     <Folder Include="Areas\System\Views\Menu\" />
-    <Folder Include="Areas\System\Views\Shared\" />
-    <Folder Include="Areas\System\Views\User\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

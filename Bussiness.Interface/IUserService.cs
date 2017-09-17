@@ -5,5 +5,6 @@ namespace Bussiness.IService
 {
     public interface IUserService : IBaseService<User>
     {
+        int AddUsserReturnId(User user);
     }
 }

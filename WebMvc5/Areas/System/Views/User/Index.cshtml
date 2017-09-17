@@ -1,0 +1,140 @@
+﻿@{
+    ViewBag.Title = "用户列表管理";
+}
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<style>
+    table {
+        border: solid 1px #ccc;
+        border-collapse: collapse;
+    }
+
+    td, th {
+        border: solid 1px #ccc;
+        text-align: center;
+        font-size: 12px;
+    }
+</style>
+<script>
+    var users = @Html.Raw(ViewBag.Users);
+
+    function addUser(){
+        var u={};
+        u.Name=$("#Name").val();
+        u.Account=$("#Account").val();
+        u.Password=$("#Password").val();
+        u.State=$("#State").val();
+        u.UserType=$("#UserType").val();
+        u.Email=$("#Email").val();
+        u.Mobile=$("#Mobile").val();
+        u.CreatorId = 1;
+        u.CompanyId = 1;
+        $.post("/System/User/Create",{user:u},function(r){
+            if(r>0){
+                u.Id=r;
+                users.push(u);
+                bindUser();
+            }else{
+                alert(r);
+            }
+        });
+    }
+
+    function delUser(i) {
+        $.post("/System/User/Delete",{user:users[i]},function(r){
+            if(r==1){
+                users.splice(i, 1);
+                bindUser();
+            }else{
+                alert(r);
+            }
+        });
+    }
+
+    function editUser(obj,i){
+        var button=$(obj);
+        var tr=button.parents("tr");
+        var tds= tr.find("td");
+        tds.attr("contenteditable",function(index){if(index>0 && index<8) return true;});
+        button.text("更新");
+        button.on("click",function(){
+            users[i].Name=$(tds[1]).text();
+            users[i].Account=$(tds[2]).text();
+            users[i].Password=$(tds[3]).text();
+            users[i].State=$(tds[4]).text();
+            users[i].UserType=$(tds[5]).text();
+            users[i].Email=$(tds[6]).text();
+            users[i].Mobile=$(tds[7]).text();
+            $.post("/System/User/Edit",{user:users[i]},function(r){
+                if(r==1){
+                    bindUser();
+                }else{
+                    alert(r);
+                }
+            });
+        })
+    }
+
+    function bindUser() {
+        var str = "<table id='users'>";
+        str += "<tr><th>Id</th><th>用户名</th><th>账号</th><th>密码</th><th>状态</th><th>类型</th><th>Email</th><th>Mobile</th><th colspan=2>操作</th></tr>";
+        for (var i = 0; i < users.length; i++) {
+            str += "<tr>";
+            str += "<td>" + users[i].Id + "</td>";
+            str += "<td>" + users[i].Name + "</td>";
+            str += "<td>" + users[i].Account + "</td>";
+            str += "<td>" + users[i].Password + "</td>";
+            str += "<td>" + users[i].State + "</td>";
+            str += "<td>" + users[i].UserType + "</td>";
+            str += "<td>" + users[i].Email + "</td>";
+            str += "<td>" + users[i].Mobile + "</td>";
+            str += "<td><button onclick='editUser(this," + i + ")'>修改</button></td><td><button onclick='delUser(" + i + ")'>删除</button></td>";
+            //users.CreatorId,users.CreateTime
+            str += "</tr>";
+        }
+        str += "</table>";
+        document.getElementById("data").innerHTML = str;
+    }
+
+    $(function(){
+        bindUser();
+    });
+</script>
+
+<h2>用户列表管理</h2>
+<div id="addUser">
+    <table>
+        <tr>
+            <td>用户名</td>
+            <td><input name="Name" id="Name" type="text" /></td>
+        </tr>
+        <tr>
+            <td>账号</td>
+            <td><input name="Account" id="Account" type="text" /></td>
+        </tr>
+        <tr>
+            <td>密码</td>
+            <td><input name="Password" id="Password" type="text" /></td>
+        </tr>
+        <tr>
+            <td>状态</td>
+            <td><input name="State" id="State" type="text" /></td>
+        </tr>
+        <tr>
+            <td>类型</td>
+            <td><input name="UserType" id="UserType" type="text" /></td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td><input name="Email" id="Email" type="text" /></td>
+        </tr>
+        <tr>
+            <td>Mobile</td>
+            <td><input name="Mobile" id="Mobile" type="tel" /></td>
+        </tr>
+        <tr><td colspan="2"><button onclick="addUser()">完成新增</button></td></tr>
+    </table>
+</div>
+<div id="data"></div>
+
+
