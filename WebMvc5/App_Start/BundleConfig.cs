@@ -29,6 +29,10 @@ namespace WebMvc5
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/easyui").Include(
+          "~/Content/themes/default/easyui.css",
+          "~/Content/themes/icon.css"));
         }
     }
 }

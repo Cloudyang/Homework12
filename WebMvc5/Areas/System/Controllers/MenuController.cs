@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Service.Model;
 
 namespace WebMvc5.Areas.System.Controllers
 {
@@ -19,9 +20,13 @@ namespace WebMvc5.Areas.System.Controllers
         // GET: System/User
         public ActionResult Index()
         {
-            var users = _MenuService.Set();
-            ViewBag.Users = Newtonsoft.Json.JsonConvert.SerializeObject(users);
             return View();
+        }
+
+        public JsonResult GetMenuTreeGrid()
+        {
+            var treeResult = _MenuService.GetMenuTreeGrid();
+            return Json(treeResult, JsonRequestBehavior.AllowGet);
         }
 
         // POST: System/User/Create

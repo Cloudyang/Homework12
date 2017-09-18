@@ -1,3 +1,4 @@
 1、数据部署advanced8正常
 2、自己新建个mvc5项目，增加个Category列表查询 实现控制器CategoryController，视图~/Views/Category/Index.cshtml（已完成）
-3、
+3.1、UserController，完成对用户的列表管理，完成普通的增删改查 通过H5+JQuery实现,也是最近刚学得前端开发
+3.2、

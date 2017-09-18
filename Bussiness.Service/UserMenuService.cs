@@ -13,6 +13,7 @@ namespace Bussiness.Service
     {
         private DbSet<User> _UserDbSet;
         private DbSet<Menu> _MenuDbSet;
+
         public UserMenuService(DbContext context) : base(context)
         {
             this._UserDbSet = context.Set<User>();

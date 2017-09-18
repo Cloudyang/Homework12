@@ -552,6 +552,9 @@
     <Content Include="Areas\System\Views\User\Index.cshtml" />
     <Content Include="Content\themes\material\images\Thumbs.db" />
     <Content Include="Areas\System\Views\Menu\Index.cshtml" />
+    <Content Include="System\Menu\treegrid_data2.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery-1.11.3.intellisense.js" />
     <Content Include="Scripts\easyloader.js" />
