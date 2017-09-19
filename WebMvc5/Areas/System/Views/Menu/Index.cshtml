@@ -32,19 +32,19 @@
        showFooter:false,
        onContextMenu: onContextMenu
        ">
-    <thead>
-        <tr>
-            <th data-options="field:'Name',width:80,editor:'textbox'">菜单名</th>
-            <th data-options="field:'Description',width:120,align:'right',editor:'textbox'">描述</th>
-            <th data-options="field:'Url',width:80,editor:'textbox'">URL</th>
-            <th data-options="field:'Sort',width:40,editor:'numberbox'">排序号</th>
-        </tr>
-    </thead>
+<thead>
+    <tr>
+        <th data-options="field:'Name',width:80,editor:'textbox'">菜单名</th>
+        <th data-options="field:'Description',width:120,align:'right',editor:'textbox'">描述</th>
+        <th data-options="field:'Url',width:80,editor:'textbox'">URL</th>
+        <th data-options="field:'Sort',width:40,editor:'numberbox'">排序号</th>
+    </tr>
+</thead>
 </table>
 <div id="mm" class="easyui-menu" style="width:120px;">
-    <div onclick="append()" data-options="iconCls:'icon-add'">新增</div>
-    <div onclick="edit()" data-options="iconCls:'icon-edit'">修改</div>
-    <div onclick="removeit()" data-options="iconCls:'icon-remove'">删除</div>
+    <div onclick="append(1)" data-options="iconCls:'icon-add'">新增</div>
+    <div onclick="edit(1)" data-options="iconCls:'icon-edit'">修改</div>
+    <div onclick="removeit(1)" data-options="iconCls:'icon-remove'">删除</div>
     <div class="menu-sep"></div>
     <div onclick="save()" data-options="iconCls:'icon-save'">保存</div>
     <div onclick="cancel()" data-options="iconCls:'icon-cancel'">取消</div>
@@ -53,7 +53,7 @@
     function onContextMenu(e, row) {
         if (row) {
             e.preventDefault();
-            $(this).treegrid('select', row.id);
+            $(this).treegrid('select', row.Id);
             editingId = row.Id;
             $('#mm').menu('show', {
                 left: e.pageX,
@@ -63,33 +63,35 @@
     }
 
     var editingId;
-    var addId = 0;
 
     var t = $('#tg');
-    function append() {
-        addId++;
-        var row = t.treegrid('getSelected');
+    function append(i) {
+        var addId
+        if (editingId == undefined) {
+            editingId = null
+        } 
         t.treegrid('append', {
-            parent: row.Id,
+            parent: editingId,
             data: [{
-                Id: addId
+                Id: ++editingId
             }]
         });
+        t.treegrid('beginEdit', editingId);
     }
 
-    function removeit() {
-        if (editingId != undefined) {
+    function removeit(i) {
+        if (i != undefined) {
             t.treegrid('remove', editingId);
             return;
         }
-        var row = t.tree('getSelected');
+        var row = t.treegrid('getSelected');
         if (row) {
             t.treegrid('remove', row.Id);
         }
     }
 
-    function edit() {
-        if (editingId != undefined) {
+    function edit(i) {
+        if (i != undefined) {
             t.treegrid('beginEdit', editingId);
             return;
         }
@@ -104,16 +106,6 @@
         if (editingId != undefined) {
             t.treegrid('endEdit', editingId);
             editingId = undefined;
-            var persons = 0;
-            var rows = t.treegrid('getChildren');
-            for (var i = 0; i < rows.length; i++) {
-                var p = parseInt(rows[i].persons);
-                if (!isNaN(p)) {
-                    persons += p;
-                }
-            }
-            var frow = t.treegrid('getFooterRows')[0];
-            frow.persons = persons;
         }
     }
 
