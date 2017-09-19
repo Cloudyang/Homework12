@@ -12,9 +12,11 @@
 <h2>菜单列表管理</h2>
 
 <div style="margin:20px 0;">
-    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="edit()">Edit</a>
-    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="save()">Save</a>
-    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="cancel()">Cancel</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="append()">新增</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="edit()">修改</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="removeit()">删除</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="save()">保存</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="cancel()">取消</a>
 </div>
 <table id="tg" class="easyui-treegrid" title="EasyUI实现树型菜单列表" style="width:700px;height:250px"
        data-options="
@@ -27,62 +29,98 @@
        method:'get',
        idField:'Id',
        treeField:'Name',
-       showFooter:false
+       showFooter:false,
+       onContextMenu: onContextMenu
        ">
     <thead>
         <tr>
-            <th data-options="field:'Name',width:80,editor:'text'">菜单名</th>
-            <th data-options="field:'Description',width:120,align:'right',editor:'text'">描述</th>
-            <th data-options="field:'Url',width:80,editor:'text'">URL</th>
+            <th data-options="field:'Name',width:80,editor:'textbox'">菜单名</th>
+            <th data-options="field:'Description',width:120,align:'right',editor:'textbox'">描述</th>
+            <th data-options="field:'Url',width:80,editor:'textbox'">URL</th>
             <th data-options="field:'Sort',width:40,editor:'numberbox'">排序号</th>
         </tr>
     </thead>
 </table>
+<div id="mm" class="easyui-menu" style="width:120px;">
+    <div onclick="append()" data-options="iconCls:'icon-add'">新增</div>
+    <div onclick="edit()" data-options="iconCls:'icon-edit'">修改</div>
+    <div onclick="removeit()" data-options="iconCls:'icon-remove'">删除</div>
+    <div class="menu-sep"></div>
+    <div onclick="save()" data-options="iconCls:'icon-save'">保存</div>
+    <div onclick="cancel()" data-options="iconCls:'icon-cancel'">取消</div>
+</div>
 <script type="text/javascript">
-        function formatProgress(value){
-            if (value){
-                var s = '<div style="width:100%;border:1px solid #ccc">' +
-                        '<div style="width:' + value + '%;background:#cc0000;color:#fff">' + value + '%' + '</div>'
-                        '</div>';
-                return s;
-            } else {
-                return '';
-            }
+    function onContextMenu(e, row) {
+        if (row) {
+            e.preventDefault();
+            $(this).treegrid('select', row.id);
+            editingId = row.Id;
+            $('#mm').menu('show', {
+                left: e.pageX,
+                top: e.pageY
+            });
         }
-        var editingId;
-        function edit(){
-            if (editingId != undefined){
-                $('#tg').treegrid('select', editingId);
-                return;
-            }
-            var row = $('#tg').treegrid('getSelected');
-            if (row){
-                editingId = row.Id
-                $('#tg').treegrid('beginEdit', editingId);
-            }
+    }
+
+    var editingId;
+    var addId = 0;
+
+    var t = $('#tg');
+    function append() {
+        addId++;
+        var row = t.treegrid('getSelected');
+        t.treegrid('append', {
+            parent: row.Id,
+            data: [{
+                Id: addId
+            }]
+        });
+    }
+
+    function removeit() {
+        if (editingId != undefined) {
+            t.treegrid('remove', editingId);
+            return;
         }
-        function save(){
-            if (editingId != undefined){
-                var t = $('#tg');
-                t.treegrid('endEdit', editingId);
-                editingId = undefined;
-                var persons = 0;
-                var rows = t.treegrid('getChildren');
-                for(var i=0; i<rows.length; i++){
-                    var p = parseInt(rows[i].persons);
-                    if (!isNaN(p)){
-                        persons += p;
-                    }
+        var row = t.tree('getSelected');
+        if (row) {
+            t.treegrid('remove', row.Id);
+        }
+    }
+
+    function edit() {
+        if (editingId != undefined) {
+            t.treegrid('beginEdit', editingId);
+            return;
+        }
+        var row = t.treegrid('getSelected');
+        if (row) {
+            editingId = row.Id;
+            t.treegrid('beginEdit', editingId);
+        }
+    }
+
+    function save() {
+        if (editingId != undefined) {
+            t.treegrid('endEdit', editingId);
+            editingId = undefined;
+            var persons = 0;
+            var rows = t.treegrid('getChildren');
+            for (var i = 0; i < rows.length; i++) {
+                var p = parseInt(rows[i].persons);
+                if (!isNaN(p)) {
+                    persons += p;
                 }
-                var frow = t.treegrid('getFooterRows')[0];
-                frow.persons = persons;
-                t.treegrid('reloadFooter');
             }
+            var frow = t.treegrid('getFooterRows')[0];
+            frow.persons = persons;
         }
-        function cancel(){
-            if (editingId != undefined){
-                $('#tg').treegrid('cancelEdit', editingId);
-                editingId = undefined;
-            }
+    }
+
+    function cancel() {
+        if (editingId != undefined) {
+            t.treegrid('cancelEdit', editingId);
+            editingId = undefined;
         }
+    }
 </script>
