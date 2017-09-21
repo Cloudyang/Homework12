@@ -15,6 +15,13 @@ namespace Bussiness.Service
         public MenuService(DbContext context) : base(context)
         { }
 
+        public int AddMenuReturnId(Menu menu)
+        {
+            dbSet.Add(menu);
+            base.Commit();
+            return menu.Id;
+        }
+
         public TreeResult<MenuView> GetMenuTreeGrid()
         {
             var menus = base.Set();

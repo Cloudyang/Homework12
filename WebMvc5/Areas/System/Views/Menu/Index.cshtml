@@ -30,7 +30,9 @@
        idField:'Id',
        treeField:'Name',
        showFooter:false,
-       onContextMenu: onContextMenu
+       onContextMenu: onContextMenu,
+       onDblClickRow: onDblClickRow,
+       onAfterEdit:onAfterEdit
        ">
 <thead>
     <tr>
@@ -69,7 +71,7 @@
         var addId
         if (editingId == undefined) {
             editingId = null
-        } 
+        }
         t.treegrid('append', {
             parent: editingId,
             data: [{
@@ -80,14 +82,24 @@
     }
 
     function removeit(i) {
+        var deleteId;
         if (i != undefined) {
-            t.treegrid('remove', editingId);
-            return;
+            deleteId = editingId;
         }
-        var row = t.treegrid('getSelected');
-        if (row) {
-            t.treegrid('remove', row.Id);
+        else {
+            var row = t.treegrid('getSelected');
+            if (row) {
+                deleteId = row.Id;
+                //  t.treegrid('remove', row.Id);
+            }
         }
+        $.post("/System/Menu/Delete", { Id: deleteId }, function (data) {
+            if (data == "1") {
+                t.treegrid('remove', deleteId);
+            } else {
+                alert(data);
+            }
+        });
     }
 
     function edit(i) {
@@ -102,11 +114,33 @@
         }
     }
 
+    function onDblClickRow(row) {
+        if (editingId != undefined) {
+            t.treegrid('cancelEdit', editingId);
+        }
+        editingId = row.Id;
+        t.treegrid('beginEdit', editingId);
+    }
+
+    var orignRow = {};
+
     function save() {
         if (editingId != undefined) {
             t.treegrid('endEdit', editingId);
             editingId = undefined;
         }
+    }
+
+
+    function onAfterEdit(row, changes) {
+        $.post("/System/Menu/Edit", { Menu: row }, function (data) {
+            if (data == "1") {
+                alert("更新成功");
+            }
+        })
+
+        t.treegrid('update', { id: row.Id, row: orignRow });
+
     }
 
     function cancel() {

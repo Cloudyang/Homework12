@@ -32,7 +32,7 @@ namespace WebMvc5.Areas.System.Controllers
             int iResult = 0;
             try
             {
-                iResult = _UserService.AddUsserReturnId(user);
+                iResult = _UserService.AddUserReturnId(user);
             }
             catch (Exception ex)
             {

@@ -15,7 +15,7 @@ namespace Bussiness.Service
         {
         }
 
-        public int AddUsserReturnId(User user)
+        public int AddUserReturnId(User user)
         {
             dbSet.Add(user);
             base.Commit();

@@ -37,7 +37,7 @@ namespace WebMvc5.Areas.System.Controllers
             int iResult = 0;
             try
             {
-                iResult = _MenuService.Insert(menu);
+                iResult = _MenuService.AddMenuReturnId(menu);
             }
             catch (Exception ex)
             {
@@ -66,12 +66,12 @@ namespace WebMvc5.Areas.System.Controllers
         }
 
         [HttpPost]
-        public string Delete(Menu menu)
+        public string Delete(int Id)
         {
             int iResult = 0;
             try
             {
-                iResult = _MenuService.Delete(menu);
+                iResult = _MenuService.Delete(Id);
             }
             catch (Exception ex)
             {
