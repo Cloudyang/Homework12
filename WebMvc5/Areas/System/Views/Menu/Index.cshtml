@@ -68,17 +68,26 @@
 
     var t = $('#tg');
     function append(i) {
-        var addId
-        if (editingId == undefined) {
-            editingId = null
+        var parentId = 0;
+        if (i != undefined) {
+            parentId = editingId;
         }
-        t.treegrid('append', {
-            parent: editingId,
-            data: [{
-                Id: ++editingId
-            }]
+        else {
+            var row = t.treegrid('getSelected');
+            if (row) {
+                parentId = row.Id;
+            }
+        }
+        $.post("/System/Menu/Create", { parentId: parentId }, function (addId) {
+            t.treegrid('append', {
+                parent: parentId,
+                data: [{
+                    Id: addId
+                }]
+            });
+            editingId = addId;
+            t.treegrid('beginEdit', addId);
         });
-        t.treegrid('beginEdit', editingId);
     }
 
     function removeit(i) {
@@ -90,7 +99,6 @@
             var row = t.treegrid('getSelected');
             if (row) {
                 deleteId = row.Id;
-                //  t.treegrid('remove', row.Id);
             }
         }
         $.post("/System/Menu/Delete", { Id: deleteId }, function (data) {
@@ -106,6 +114,10 @@
         if (i != undefined) {
             t.treegrid('beginEdit', editingId);
             return;
+        }
+        if (editingId != undefined) {
+            t.treegrid('cancelEdit', editingId);
+            editingId = undefined;
         }
         var row = t.treegrid('getSelected');
         if (row) {
@@ -133,14 +145,11 @@
 
 
     function onAfterEdit(row, changes) {
-        $.post("/System/Menu/Edit", { Menu: row }, function (data) {
+        $.post("/System/Menu/Edit", { m: row }, function (data) {
             if (data == "1") {
                 alert("更新成功");
             }
-        })
-
-        t.treegrid('update', { id: row.Id, row: orignRow });
-
+        });
     }
 
     function cancel() {

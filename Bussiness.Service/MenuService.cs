@@ -33,6 +33,10 @@ namespace Bussiness.Service
                                 Name = m.Name,
                                 Url = m.Url,
                                 Sort = m.Sort,
+                                State=m.State,
+                                MenuLevel=m.MenuLevel,
+                                ParentId=m.ParentId,
+                                SourcePath=m.SourcePath,
                                 _parentId = m.ParentId
                             }).Union(menus.Where(o => o.ParentId == 0)
                             .Select(m => new MenuView
@@ -42,6 +46,10 @@ namespace Bussiness.Service
                                 Name = m.Name,
                                 Url = m.Url,
                                 Sort = m.Sort,
+                                State = m.State,
+                                MenuLevel = m.MenuLevel,
+                                ParentId = m.ParentId,
+                                SourcePath = m.SourcePath,
                                 _parentId =null
                             }));
             TreeResult<MenuView> treeResult = new TreeResult<MenuView>()
