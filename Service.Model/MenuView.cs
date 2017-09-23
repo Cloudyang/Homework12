@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Service.Model
 {
-    public class MenuView
+   public class MenuView
     {
         public int Id { get; set; }
         public string Name { get; set; }
