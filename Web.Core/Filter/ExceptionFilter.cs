@@ -95,7 +95,7 @@ Controller->IExceptionFilter->OnException
                 act.Invoke();
                 return true;
             }
-            catch (Exception ex)
+            catch
             {
                 return false;
             }

@@ -27,6 +27,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service.Model", "Service.Mo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.Core", "Web.Core\Web.Core.csproj", "{1D87BBA5-61F8-4F85-A17D-7A884B8E16D2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{541FE6AF-ACF6-4E3E-A1FC-103FC3A0DF1F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Framework", "Common.Framework\Common.Framework.csproj", "{02C7E842-799D-4CB8-BF22-E2F3082CD110}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,9 +73,17 @@ Global
 		{1D87BBA5-61F8-4F85-A17D-7A884B8E16D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1D87BBA5-61F8-4F85-A17D-7A884B8E16D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1D87BBA5-61F8-4F85-A17D-7A884B8E16D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02C7E842-799D-4CB8-BF22-E2F3082CD110}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02C7E842-799D-4CB8-BF22-E2F3082CD110}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02C7E842-799D-4CB8-BF22-E2F3082CD110}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02C7E842-799D-4CB8-BF22-E2F3082CD110}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1D87BBA5-61F8-4F85-A17D-7A884B8E16D2} = {541FE6AF-ACF6-4E3E-A1FC-103FC3A0DF1F}
+		{02C7E842-799D-4CB8-BF22-E2F3082CD110} = {541FE6AF-ACF6-4E3E-A1FC-103FC3A0DF1F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {38903D90-C71C-49C2-9188-6418DCCF4B33}

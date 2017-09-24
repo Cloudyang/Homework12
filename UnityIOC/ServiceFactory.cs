@@ -1,5 +1,6 @@
 ﻿using Entity.Model;
 using Microsoft.Practices.Unity;
+using Microsoft.Practices.Unity.InterceptionExtension;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -106,7 +107,7 @@ namespace UnityIOC
                     }
                 }
             }
-
+            container.AddNewExtension<Interception>();
             //根据注册的接口和接口实现集合，使用IOC容器进行注册
             foreach (string key in dictInterface.Keys)
             {
@@ -116,10 +117,37 @@ namespace UnityIOC
                     Type ServiceType = dictService[ServiceKey];
                     if (interfaceType.IsAssignableFrom(ServiceType))//判断Service是否实现了某接口
                     {
-                        container.RegisterType(interfaceType, ServiceType);
+                        container.RegisterType(interfaceType, ServiceType,
+                            new InterceptionBehavior<LogBehavior>());
                     }
                 }
             }
+            
+            
+        }
+    }
+
+    public class LogBehavior : IInterceptionBehavior
+    {
+        public bool WillExecute
+        {
+            get
+            {
+                return true;
+            }
+        }
+
+        public IEnumerable<Type> GetRequiredInterfaces()
+        {
+            return Type.EmptyTypes;
+        }
+
+        public IMethodReturn Invoke(IMethodInvocation input, GetNextInterceptionBehaviorDelegate getNext)
+        {
+            Console.WriteLine("LogBehavior before");
+            IMethodReturn method = getNext().Invoke(input, getNext);
+            Console.WriteLine("LogBehavior after");
+            return method;
         }
     }
 }
