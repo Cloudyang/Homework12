@@ -1,5 +1,6 @@
 ﻿using System.Web;
 using System.Web.Mvc;
+using Common.Web.Core.Filter;
 
 namespace WebMvc5
 {
@@ -7,6 +8,7 @@ namespace WebMvc5
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
+            filters.Add(new AuthorityFilterAttribute());
             filters.Add(new HandleErrorAttribute());
         }
     }

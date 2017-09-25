@@ -647,6 +647,10 @@
       <Project>{3835f109-cb64-4487-8f8f-8304aa38f089}</Project>
       <Name>Bussiness.IService</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Common.Framework\Common.Framework.csproj">
+      <Project>{02c7e842-799d-4cb8-bf22-e2f3082cd110}</Project>
+      <Name>Common.Framework</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EF.Model\Entity.Model.csproj">
       <Project>{3015f80e-ce5f-44b5-89a2-2789eff00109}</Project>
       <Name>Entity.Model</Name>
@@ -654,6 +658,10 @@
     <ProjectReference Include="..\Service.Model\Service.Model.csproj">
       <Project>{9a496692-9270-45e5-b9ff-74ad686b9c53}</Project>
       <Name>Service.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Web.Core\Web.Core.csproj">
+      <Project>{1d87bba5-61f8-4f85-a17d-7a884b8e16d2}</Project>
+      <Name>Web.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

@@ -21,7 +21,7 @@ namespace Common.Web.Core.Filter
         private string _LoginPath = "";
         public AuthorityFilterAttribute()
         {
-            this._LoginPath = "/Fourth/Login";
+            this._LoginPath = "/Home/Index";
         }
 
         public AuthorityFilterAttribute(string loginPath)
